@@ -1,6 +1,6 @@
 import XCTest
 @testable import main
-final class TwoSumTest: XCTestCase {
+final class TwoSumTests: XCTestCase {
     func testTwoSum() {
         let twoSum = TwoSum()
         XCTAssertEqual(twoSum.twoSum([2, 7, 11, 15], 9), [0, 1])
