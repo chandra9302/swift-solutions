@@ -11,11 +11,18 @@ let package = Package(
             name: "main",
             targets: ["main"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(
+            url: "https://github.com/apple/swift-collections.git", 
+            .upToNextMinor(from: "1.1.0") // or `.upToNextMajor
+        )
+    ],
     targets: [
         .target(
             name: "main",
-            dependencies: []),
+            dependencies: [
+                .product(name: "Collections", package: "swift-collections")
+            ]),
         .testTarget(
             name: "tests",
             dependencies: ["main"]),
