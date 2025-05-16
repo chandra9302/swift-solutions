@@ -7,7 +7,9 @@ class KthLargestElementInAnArray {
         var minHeap = Heap<Int>()
         
         nums.forEach { num in
+            // Insert the current number into the min-heap
             minHeap.insert(num)
+            // If the size of the min-heap exceeds k, remove the smallest element
             if minHeap.count > k {
                 _ = minHeap.removeMin()
             }
