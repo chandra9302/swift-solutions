@@ -1,14 +1,14 @@
 import XCTest
 @testable import main
 
-final class LowestCommonAncestorAfABinaryTreeIIITests: XCTestCase {
-    var lowestCommonAncestorAfABinaryTreeIII: LowestCommonAncestorAfABinaryTreeIII!
+final class LowestCommonAncestorOfABinaryTreeIIITests: XCTestCase {
+    var lowestCommonAncestorAfABinaryTreeIII: LowestCommonAncestorOfABinaryTreeIII!
     var root1: Node!
     var root2: Node!
 
     override func setUp() {
         super.setUp()
-        lowestCommonAncestorAfABinaryTreeIII = LowestCommonAncestorAfABinaryTreeIII()
+        lowestCommonAncestorAfABinaryTreeIII = LowestCommonAncestorOfABinaryTreeIII()
         
         // Tree 1 setup
         root1 = Node(3)

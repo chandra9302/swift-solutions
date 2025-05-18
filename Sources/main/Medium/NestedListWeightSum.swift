@@ -56,12 +56,18 @@ public class NestedInteger {
 
 class NestedListWeightSum {
     func depthSum(_ nestedList: [NestedInteger]) -> Int {
+        // This variable will hold the total sum
         var total = 0
+        // Helper function to recursively calculate the sum
         func helper(_ nestedList: [NestedInteger], _ depth: Int) {
+            // Iterate through each NestedInteger in the list
             nestedList.forEach { nestedInteger in
+                // Check if the current NestedInteger is an integer or a list
+                // If it's an integer, multiply it by the current depth and add to total
                 if nestedInteger.isInteger() {
                     total += (nestedInteger.getInteger() * depth)
                 } else {
+                    // If it's a list, recursively call the helper function with the nested list and increased depth
                     helper(nestedInteger.getList(), depth + 1)
                 }
             }
@@ -69,6 +75,4 @@ class NestedListWeightSum {
         helper(nestedList, 1)    
         return total
     }
-
-    
 }

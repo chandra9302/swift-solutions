@@ -14,7 +14,7 @@ public class Node {
     }
 }
 
-class LowestCommonAncestorAfABinaryTreeIII {
+class LowestCommonAncestorOfABinaryTreeIII {
     func lowestCommonAncestor(_ p: Node?, _ q: Node?) -> Node? {
         guard let p = p, let q = q else { return nil }
         

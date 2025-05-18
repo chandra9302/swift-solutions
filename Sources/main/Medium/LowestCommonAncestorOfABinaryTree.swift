@@ -1,4 +1,4 @@
-class LowestCommonAncestorAfABinaryTree {
+class LowestCommonAncestorOfABinaryTree {
     func lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?) -> TreeNode? {
         guard let root = root else { return nil }
         // If the current node is either p or q, return it
