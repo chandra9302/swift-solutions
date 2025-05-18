@@ -3,35 +3,35 @@ import XCTest
 
 final class LowestCommonAncestorOfABinaryTreeIIITests: XCTestCase {
     var lowestCommonAncestorAfABinaryTreeIII: LowestCommonAncestorOfABinaryTreeIII!
-    var root1: Node!
-    var root2: Node!
+    var root1: NodeWithParent!
+    var root2: NodeWithParent!
 
     override func setUp() {
         super.setUp()
         lowestCommonAncestorAfABinaryTreeIII = LowestCommonAncestorOfABinaryTreeIII()
         
         // Tree 1 setup
-        root1 = Node(3)
-        root1.left = Node(5)
+        root1 = NodeWithParent(3)
+        root1.left = NodeWithParent(5)
         root1.left?.parent = root1
-        root1.right = Node(1)
+        root1.right = NodeWithParent(1)
         root1.right?.parent = root1
-        root1.left?.left = Node(6)
+        root1.left?.left = NodeWithParent(6)
         root1.left?.left?.parent = root1.left
-        root1.left?.right = Node(2)
+        root1.left?.right = NodeWithParent(2)
         root1.left?.right?.parent = root1.left
-        root1.left?.right?.left = Node(7)
+        root1.left?.right?.left = NodeWithParent(7)
         root1.left?.right?.left?.parent = root1.left?.right
-        root1.left?.right?.right = Node(4)
+        root1.left?.right?.right = NodeWithParent(4)
         root1.left?.right?.right?.parent = root1.left?.right
-        root1.right?.left = Node(0)
+        root1.right?.left = NodeWithParent(0)
         root1.right?.left?.parent = root1.right
-        root1.right?.right = Node(8)
+        root1.right?.right = NodeWithParent(8)
         root1.right?.right?.parent = root1.right
 
         // Tree 2 setup
-        root2 = Node(1)
-        root2.left = Node(2)
+        root2 = NodeWithParent(1)
+        root2.left = NodeWithParent(2)
         root2.left?.parent = root2
     }
 

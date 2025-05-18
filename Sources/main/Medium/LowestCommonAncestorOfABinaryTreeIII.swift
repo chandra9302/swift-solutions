@@ -1,11 +1,11 @@
 /**
- * Definition for a Node.
+ * Definition for a NodeWithParent.
  */
-public class Node {
+public class NodeWithParent {
     public var val: Int
-    public var left: Node?
-    public var right: Node?
-    public var parent: Node?
+    public var left: NodeWithParent?
+    public var right: NodeWithParent?
+    public var parent: NodeWithParent?
     public init(_ val: Int) {
         self.val = val
         self.left = nil
@@ -15,27 +15,27 @@ public class Node {
 }
 
 class LowestCommonAncestorOfABinaryTreeIII {
-    func lowestCommonAncestor(_ p: Node?, _ q: Node?) -> Node? {
+    func lowestCommonAncestor(_ p: NodeWithParent?, _ q: NodeWithParent?) -> NodeWithParent? {
         guard let p = p, let q = q else { return nil }
         
         // Create a set to store the ancestors of p
         var ancestorsP = Set<Int>()
         
-        var currentNode: Node? = p
+        var currentNodeWithParent: NodeWithParent? = p
         // Traverse up the tree from p to the root, adding each ancestor to the set
-        while let node = currentNode {
-            ancestorsP.insert(node.val)
-            currentNode = node.parent
+        while let NodeWithParent = currentNodeWithParent {
+            ancestorsP.insert(NodeWithParent.val)
+            currentNodeWithParent = NodeWithParent.parent
         }
         
-        currentNode = q
+        currentNodeWithParent = q
         // Traverse up the tree from q to the root
         // The first ancestor of q that is also in the set of ancestors of p is the LCA
-        while let node = currentNode {
-            if ancestorsP.contains(node.val) {
-                return node
+        while let NodeWithParent = currentNodeWithParent {
+            if ancestorsP.contains(NodeWithParent.val) {
+                return NodeWithParent
             }
-            currentNode = node.parent
+            currentNodeWithParent = NodeWithParent.parent
         }
         
         return nil
