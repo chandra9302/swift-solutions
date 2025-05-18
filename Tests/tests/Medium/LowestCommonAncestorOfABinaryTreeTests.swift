@@ -1,12 +1,12 @@
 import XCTest
 @testable import main
 
-final class LowestCommonAncestorAfABinaryTreeTests: XCTestCase {
-    var lowestCommonAncestor: LowestCommonAncestorAfABinaryTree!
+final class LowestCommonAncestorOfABinaryTreeTests: XCTestCase {
+    var lowestCommonAncestor: LowestCommonAncestorOfABinaryTree!
 
     override func setUp() {
         super.setUp()
-        lowestCommonAncestor = LowestCommonAncestorAfABinaryTree()
+        lowestCommonAncestor = LowestCommonAncestorOfABinaryTree()
     }
 
     override func tearDown() {

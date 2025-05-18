@@ -35,7 +35,7 @@ class BasicCalculatorII {
             }
         }
         
-        
+        // The final result is the sum of all the numbers in the stack
         return stack.reduce(0, +)
     }
 }
