@@ -21,13 +21,14 @@ final class CarPooling {
 
             // Update the current capacity with the new trip
             currentCapacity += passengers
-            // Add the current trip to the min-heap
-            minHeap.append((passengers, end))
-            minHeap.sort { $0.1 < $1.1 } // Sort the heap by end time
-
+            // If the current capacity exceeds the maximum capacity, return false
             if currentCapacity > capacity {
                 return false
             }
+
+            // Add the current trip to the min-heap
+            minHeap.append((passengers, end))
+            minHeap.sort { $0.1 < $1.1 } // Sort the heap by end time
 
             // Check if the capacity is exceeded
             let totalPassengers = minHeap.reduce(0) { $0 + $1.0 }
