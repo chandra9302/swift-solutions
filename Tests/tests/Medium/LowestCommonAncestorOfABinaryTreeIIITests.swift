@@ -46,17 +46,20 @@ final class LowestCommonAncestorOfABinaryTreeIIITests: XCTestCase {
         let p1 = root1.left // 5
         let q1 = root1.right // 1
         XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor(p1, q1)?.val, 3) // LCA is 3
+        XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor2(p1, q1)?.val, 3) // LCA is 3
     }
 
     func testLowestCommonAncestorAfABinaryTreeIII_case2() {
         let p2 = root1.left // 5
         let q2 = root1.left?.right?.right // 4
         XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor(p2, q2)?.val, 5) // LCA is 5
+        XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor2(p2, q2)?.val, 5) // LCA is 5
     }
 
     func testLowestCommonAncestorAfABinaryTreeIII_case3() {
         let p3 = root2 // 1
         let q3 = root2.left // 2
         XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor(p3, q3)?.val, 1) // LCA is 1
+        XCTAssertEqual(lowestCommonAncestorAfABinaryTreeIII.lowestCommonAncestor2(p3, q3)?.val, 1) // LCA is 1
     }
 }
