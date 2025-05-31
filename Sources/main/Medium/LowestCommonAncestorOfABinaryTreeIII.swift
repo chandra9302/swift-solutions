@@ -40,4 +40,25 @@ class LowestCommonAncestorOfABinaryTreeIII {
         
         return nil
     }
+
+    // O(1) space solution
+    // This solution uses two pointers to traverse the tree without using extra space.
+    // It works by moving each pointer to its parent until they meet at the lowest common ancestor.
+    // If one pointer reaches the root, it is redirected to the other pointer, ensuring both pointers traverse the same number of nodes.
+    // This approach is efficient and avoids the need for a set to store ancestors.
+    func lowestCommonAncestor2(_ p: NodeWithParent?, _ q: NodeWithParent?) -> NodeWithParent? {
+        
+        var pStart = p
+        var qStart = q
+
+        while pStart !== qStart {
+            // Move p to its parent if it exists, otherwise move it to q
+            pStart = pStart?.parent ?? q
+            
+            // Move q to its parent if it exists, otherwise move it to p
+            qStart = qStart?.parent ?? p
+        }
+        // When p and q meet, they are at the lowest common ancestor
+        return p
+    }
 }

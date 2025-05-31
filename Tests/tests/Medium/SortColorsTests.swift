@@ -26,6 +26,12 @@ final class SortColorsTests: XCTestCase {
         XCTAssertEqual(nums, [0, 1, 2])
     }
 
+    func testSortColorsWithThreeElements1() {
+        var nums = [1, 2, 0]
+        sortColors.sortColors(&nums)
+        XCTAssertEqual(nums, [0, 1, 2])
+    }
+
     func testSortColorsWithSingleZero() {
         var nums = [0]
         sortColors.sortColors(&nums)
