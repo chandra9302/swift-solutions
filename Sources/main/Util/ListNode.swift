@@ -25,3 +25,28 @@ public class ListNode {
     }
 }
 
+extension ListNode: Comparable, Equatable, Hashable {
+    public static func < (lhs: ListNode, rhs: ListNode) -> Bool {
+        return lhs.val < rhs.val
+    }
+    
+    public static func <= (lhs: ListNode, rhs: ListNode) -> Bool {
+        return lhs.val <= rhs.val
+    }
+    
+    public static func > (lhs: ListNode, rhs: ListNode) -> Bool {
+        return lhs.val > rhs.val
+    }
+    
+    public static func >= (lhs: ListNode, rhs: ListNode) -> Bool {
+        return lhs.val >= rhs.val
+    }
+    public static func == (lhs: ListNode, rhs: ListNode) -> Bool {
+        return lhs.val == rhs.val && lhs.next == rhs.next
+    }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(val)
+        hasher.combine(next)
+    }
+}
+
