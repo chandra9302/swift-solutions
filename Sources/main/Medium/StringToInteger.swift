@@ -1,51 +1,39 @@
 final class StringToInteger {
     func myAtoi(_ s: String) -> Int {
-        // Trim leading and trailing whitespace
-        let trimmedString = s.trimmingCharacters(in: .whitespacesAndNewlines)
-        // Check if the string is empty after trimming
-        guard !trimmedString.isEmpty else { return 0 }
-        
-        // Initialize variables
-        var sign = 1
+        // Convert the string to an array of characters after trimming whitespaces
+        let chars = Array(s.trimmingCharacters(in: .whitespaces))
+        // Check if the array is empty after trimming
+         // If it is empty, return 0 as per the problem statement
+        guard !chars.isEmpty else { return 0 }
+
+        // The result variable will hold the final integer value
+        var result = 0
+        // A flag to check if the number is negative
+        var isNegative = false
+        // Start parsing the characters from the beginning
         var index = 0
-        let length = trimmedString.count
-        let maxInt = Int32.max
-        let minInt = Int32.min
-        
-        // Check for sign
-        // If the first character is a sign, update the sign and increment the index
-        if trimmedString[trimmedString.startIndex] == "-" {
-            sign = -1
+
+        // Check for optional sign at the beginning
+        if chars[index] == "-" {
+            isNegative = true
             index += 1
-        } else if trimmedString[trimmedString.startIndex] == "+" {
+        } else if chars[index] == "+" {
             index += 1
         }
-        
-        // Initialize result variable
-        var result: Int32 = 0
-        
-        // Iterate through the string until a non-digit character is found or the end of the string is reached
-        while index < length {
-            // Check if the character is a digit
-            let char = trimmedString[trimmedString.index(trimmedString.startIndex, offsetBy: index)]
-            guard let digit = char.wholeNumberValue else { break }
-            
-            // Check for overflow
-            // If the result is greater than the maximum integer value, return the maximum or minimum integer value
-            if result > (maxInt - Int32(digit)) / 10 {
-                // If the sign is positive, return the maximum integer value
-                // If the sign is negative, return the minimum integer value
-                return sign == 1 ? Int(maxInt) : Int(minInt)
+
+        // Iterate through the characters until we reach a non-digit character or the end of the string.
+        while index < chars.count, let digit = chars[index].wholeNumberValue {
+            // Check for overflow conditions
+            if result > (Int(Int32.max) - digit) / 10 {
+                // If the result exceeds the maximum value for a 32-bit signed integer, return the appropriate limit
+                return isNegative ? Int(Int32.min) : Int(Int32.max)
             }
-            
-            // Update the result
-            result = result * 10 + Int32(digit)
-            // Increment the index
+            // Update the result by multiplying the current result by 10 and adding the new digit
+            result = result * 10 + digit
             index += 1
         }
-        
-        // Return the result multiplied by the sign
-        // The result is multiplied by the sign to account for negative numbers
-        return Int(result * Int32(sign))
+
+        // If the number is negative, return the negative result
+        return isNegative ? -result : result
     }
 }
