@@ -35,6 +35,28 @@ final class InsertIntoASortedCircularLinkedListTests: XCTestCase {
         XCTAssertEqual(resultArray, [3, 4, 1, 2])
     }
 
+    func testInsertIntoSortedCircularLinkedListAtBoundary() {
+        let head = Node(3)
+        head.next = Node(4)
+        head.next?.next = Node(1)
+        head.next?.next?.next = Node(2)
+        head.next?.next?.next?.next = head // Making it circular
+        
+        let result = insertIntoASortedCircularLinkedList.insert(head, 5)
+        
+        var current: Node? = result
+        var resultArray: [Int] = []
+        
+        repeat {
+            if let value = current?.val {
+                resultArray.append(value)
+            }
+            current = current?.next
+        } while current !== result
+        
+        XCTAssertEqual(resultArray, [3, 4, 5, 1, 2])
+    }
+
     func testInsertIntoSortedCircularLinkedListEmpty() {
         let result = insertIntoASortedCircularLinkedList.insert(nil, 5)
         

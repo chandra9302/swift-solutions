@@ -14,13 +14,13 @@ class InsertIntoASortedCircularLinkedList {
         // we need to use a repeat-while loop to ensure we check the circular nature of the list for once
         repeat {
             if let currentVal = current?.val, let nextVal = next?.val {
-                // Case 2: If the current node's value is less than or equal to the insert value, normal ascending order insert
+                // Case 2: If the new value is between current and next, we insert it here
                 if currentVal <= insertVal && insertVal <= nextVal {
                     break
                 }
                 
+                // Case 3: If we are at the end of the list (the largest value or max to min transition)
                 if currentVal > nextVal {
-                    // Case 3: If we are at the end of the list (the largest value or max to min transition)
                     if insertVal >= currentVal || insertVal <= nextVal {
                         break
                     }
