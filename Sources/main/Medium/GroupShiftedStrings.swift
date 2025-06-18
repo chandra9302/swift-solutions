@@ -38,4 +38,29 @@ final class GroupShiftedStrings {
         return diffs.map { String($0) }.joined(separator: ",")
     }
 
+    // Alternative implementation using a different approach without using asciiValue
+    // utf8 is used to handle the string as an array of bytes 
+    // This is useful for strings that may contain non-ASCII characters.
+    private func signature(of str: String) -> String {
+        guard str.count > 1 else { return "single" } // Single character strings can be grouped together
+
+        var diffs = [Int]()
+        let bytes = Array(str.utf8)
+        for i in 1..<bytes.count {
+            // Calculate the difference between the current character and the previous one
+            // Why wrap asciiValue with Int? Because asciiValue returns UInt8 which is unsigned and we cannot subtract unsigned ints.
+            // Without this we will run into Swift runtime failure: arithmetic overflow
+
+            // Why add 26? Because we want to ensure that the difference is always positive and within the range of 0-25.
+            // In swift, % operator returns negative which would result in incorrect way to handle circular shifts.
+            
+            // True modulo is always non-negative 
+            let diff = (Int(bytes[i]) - Int(bytes[i - 1]) + 26) % 26
+            // Append the difference to the list of differences
+            diffs.append(diff)
+        }
+        // Convert the differences to a string key
+        return diffs.map { String($0) }.joined(separator: ",")
+    }
+
 }
