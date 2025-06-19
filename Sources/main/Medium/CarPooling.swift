@@ -1,5 +1,34 @@
 final class CarPooling {
     func carPooling(_ trips: [[Int]], _ capacity: Int) -> Bool {
+        // Create an array to track the number of passengers at each time point
+        var timeline = Array(repeating: 0, count: 1001) // 1000 is the max end time as per given constraints
+
+        // Update the timeline based on the trips
+        for trip in trips {
+            let passengers = trip[0]
+            let start = trip[1]
+            let end = trip[2]
+
+            // Increment passengers at the start time and decrement at the end time
+            timeline[start] += passengers
+            timeline[end] -= passengers
+        }
+
+        // Check if the capacity is exceeded at any time point
+        var currentCapacity = 0
+        for change in timeline {
+            // Prefix sum to get the current number of passengers from the changes
+            currentCapacity += change
+            // If at any point the current capacity exceeds the maximum capacity, return false
+            if currentCapacity > capacity {
+                return false
+            }
+        }
+        return true
+    }
+
+
+    func carPoolingUsingHeap(_ trips: [[Int]], _ capacity: Int) -> Bool {
         // Sort the trips based on the start time
         let sortedTrips = trips.sorted { $0[1] < $1[1] }
         // Initialize a min-heap to keep track of the end times of trips
@@ -39,4 +68,12 @@ final class CarPooling {
 
         return true
     }
+    /*
+    // Time Complexity: O(n log n)
+        •	n is the number of trips.
+        •	Sorting the trips takes O(n log n).
+        •	Each trip is processed once, and adding/removing from the heap takes O(log n) in the worst case.
+    // Space Complexity: O(n)
+        •	In the worst case, all trips could overlap, and we would store all of them in the heap.
+    */
 }
