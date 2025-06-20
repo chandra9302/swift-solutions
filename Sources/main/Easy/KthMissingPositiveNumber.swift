@@ -2,6 +2,16 @@ class KthMissingPositiveNumber {
     func findKthPositive(_ arr: [Int], _ k: Int) -> Int {
         var left = 0, right = arr.count - 1
 
+        func missingCount(upTo index: Int) -> Int {
+            // Calculate how many positive integers are missing up to arr[index]
+            return arr[index] - (index + 1)
+        }
+
+        // Edge case: if k is larger than the number of missing numbers in the array
+        if arr.isEmpty || k > missingCount(upTo: arr.count - 1) + arr.count {
+            return k
+        }
+
         // Binary search to find the position where k missing numbers would fit
         while left <= right {
             let mid = left + (right - left) / 2
@@ -17,7 +27,7 @@ class KthMissingPositiveNumber {
             }
         }
         // After the loop, left is the position where k missing numbers would fit
-        // The k-th missing positive number is at position left + k
-        return left + k
+        // The k-th missing positive number will be in between arr[left - 1] and arr[left]
+        return arr[left - 1] + (k - missingCount(upTo: left - 1))
     }
 }
