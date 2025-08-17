@@ -1,5 +1,5 @@
-class FindMinimumInRotatedSortedArray {
-    func findMin(_ nums: [Int]) -> Int {
+struct FindMinimumInRotatedSortedArray {
+    static func findMin(_ nums: [Int]) -> Int {
         var left = 0
         var right = nums.count - 1
         
