@@ -1,5 +1,5 @@
-class TwoSum {
-    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+struct TwoSum {
+    static func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
 
         // Dictionary to store the indices of the numbers
         var numToIndex = [Int: Int]()
