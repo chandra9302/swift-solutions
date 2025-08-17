@@ -1,5 +1,5 @@
-class SearchInRotatedSortedArray {
-    func search(_ nums: [Int], _ target: Int) -> Int {
+struct SearchInRotatedSortedArray {
+    static func search(_ nums: [Int], _ target: Int) -> Int {
         var left = 0
         var right = nums.count - 1
         
