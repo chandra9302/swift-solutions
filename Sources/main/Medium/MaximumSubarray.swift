@@ -4,7 +4,7 @@ class MaximumSubarray {
         var maxSum = nums[0]
         var currentSum = 0
         
-        // Iterate through the array
+        // Kadane's algo, reset current Sum when its < 0
         nums.forEach { num in
             // Add the current number to the current sum
             currentSum += num
